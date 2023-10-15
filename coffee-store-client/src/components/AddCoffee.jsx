@@ -1,8 +1,27 @@
 const AddCoffee = () => {
+  const handleAddCoffee = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const quantity = form.quantity.value;
+    const supplier = form.supplier.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+    const newCoffee = {
+      name,
+      quantity,
+      supplier,
+      category,
+      details,
+      photo,
+    };
+    console.log(newCoffee);
+  };
   return (
     <div className="bg-[#F4F3F0] p-24">
       <h3 className="text-3xl font-extrabold text-center">Add New Coffee</h3>
-      <form>
+      <form onSubmit={handleAddCoffee}>
         {/* form row */}
         <div className=" md:flex mb-8">
           <div className="form-control md:w-1/2">
@@ -40,7 +59,7 @@ const AddCoffee = () => {
             </label>
             <label className="input-group">
               <input
-                name="name"
+                name="supplier"
                 type="text"
                 placeholder="Enter coffee supplier"
                 className="input input-bordered w-full"
@@ -53,7 +72,7 @@ const AddCoffee = () => {
             </label>
             <label className="input-group">
               <input
-                name="quantity"
+                name="taste"
                 type="text"
                 placeholder="Enter coffee taste"
                 className="input input-bordered w-full"
@@ -69,7 +88,7 @@ const AddCoffee = () => {
             </label>
             <label className="input-group">
               <input
-                name="name"
+                name="category"
                 type="text"
                 placeholder="Enter coffee category"
                 className="input input-bordered w-full"
@@ -82,7 +101,7 @@ const AddCoffee = () => {
             </label>
             <label className="input-group">
               <input
-                name="quantity"
+                name="details"
                 type="text"
                 placeholder="Enter coffee details"
                 className="input input-bordered w-full"
@@ -98,7 +117,7 @@ const AddCoffee = () => {
             </label>
             <label className="input-group">
               <input
-                name="name"
+                name="photo"
                 type="photo"
                 placeholder="Enter photo URL"
                 className="input input-bordered w-full"
@@ -106,7 +125,7 @@ const AddCoffee = () => {
             </label>
           </div>
         </div>
-        <input type="submit" value="Add Coffee" className="btn btn-block"/>
+        <input type="submit" value="Add Coffee" className="btn btn-block" />
       </form>
     </div>
   );
