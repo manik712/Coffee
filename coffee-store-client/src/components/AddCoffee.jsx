@@ -17,7 +17,20 @@ const AddCoffee = () => {
       photo,
     };
     console.log(newCoffee);
+
+    fetch('http://localhost:8000/coffee',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(newCoffee)
+    })
+    .then(res =>res.json())
+    .then(data =>{console.log(data)})
   };
+
+
+
   return (
     <div className="bg-[#F4F3F0] p-24">
       <h3 className="text-3xl font-extrabold text-center">Add New Coffee</h3>
