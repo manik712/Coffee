@@ -22,8 +22,9 @@ const CoffeeCart = ({ coffee }) => {
       // )
 
        fetch(`http://localhost:8000/coffee/${_id}`)
-
-      console.log("delete confirm");
+        .then(res => res.json())
+        .then(data =>{console.log(data);})
+      
     }
   })
 
