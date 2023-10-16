@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 const AddCoffee = () => {
   const handleAddCoffee = (event) => {
     event.preventDefault();
@@ -14,22 +16,26 @@ const AddCoffee = () => {
       supplier,
       category,
       details,
-      photo,
+      photo, 
     };
     console.log(newCoffee);
 
-    fetch('http://localhost:8000/coffee',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
+    fetch("http://localhost:8000/coffee", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(newCoffee)
+      body: JSON.stringify(newCoffee),
     })
-    .then(res =>res.json())
-    .then(data =>{console.log(data)})
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.insertedId){
+           
+          Swal.fire('User added successfully')
+        }
+      });
   };
-
-
 
   return (
     <div className="bg-[#F4F3F0] p-24">
