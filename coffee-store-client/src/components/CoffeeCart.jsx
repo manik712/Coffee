@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
-const CoffeeCart = ({ coffee }) => {
+const CoffeeCart = ({ coffee,setCoffees,coffees }) => {
+
+  console.log(coffees);
   const handleDelete = (_id) => {
     console.log(_id);
     Swal.fire({
@@ -15,14 +17,17 @@ const CoffeeCart = ({ coffee }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8000/coffee/${_id}`,{
+        fetch(`http://localhost:8000/coffee/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.deletedCount >0) {
+            if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
+
+              const remaining = coffees.filter(fee =>fee._id !==_id);
+              setCoffees(remaining); 
             }
           });
       }
@@ -45,7 +50,9 @@ const CoffeeCart = ({ coffee }) => {
         <div className="card-actions justify-end">
           <div className="btn-group btn-group-vertical space-y-3">
             <button className="btn bg-fuchsia-700">view</button>
-            <Link to={`updateCoffee/${_id}`}><button className="btn bg-emerald-400">Edit</button></Link>
+            <Link to={`updateCoffee/${_id}`}>
+              <button className="btn bg-emerald-400">Edit</button>
+            </Link>
             <button
               onClick={() => handleDelete(_id)}
               className="btn bg-red-700 text-white"
