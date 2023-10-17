@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddCoffee from "./components/AddCoffee";
 import UpdateCoffee from "./components/UpdateCoffee";
 import SignUp from "./components/SignUp.jsx";
-import SignIn from "./components/SignIn.jsx";
+import SignIn from "./components/SignUp.jsx";
 import AuthProvider from "./components/authProvider/AuthProvider.jsx";
 const router = createBrowserRouter([
   {
